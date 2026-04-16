@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FlowPilot lets non-technical users build multi-step AI workflows visually. A concept product showcase by Valen Hu for SI 539.">
+  <meta name="theme-color" content="#0A0A0F">
+  <title>FlowPilot — Your AI, orchestrated.</title>
+
+  <!-- Fonts: Geist (display) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/variables.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components.css">
+</head>
+<body>
+
+  <!-- Skip to main content (keyboard accessibility) -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════ -->
+  <header class="site-nav">
+    <div class="site-nav__inner">
+      <a href="#" class="site-nav__brand" aria-label="FlowPilot home">
+        <span class="site-nav__logo" aria-hidden="true">▸</span>
+        <span>FlowPilot</span>
+      </a>
+
+      <nav class="site-nav__links" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#use-cases">Use Cases</a>
+      </nav>
+
+      <div class="site-nav__cta">
+        <a href="#how-it-works" class="btn btn--primary btn--sm">
+          Try the demo <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <button class="site-nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile overlay menu -->
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <nav aria-label="Mobile navigation">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#use-cases">Use Cases</a>
+        <a href="#how-it-works" class="btn btn--primary">Try the demo →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════════ -->
+    <section class="hero">
+      <div class="hero__inner">
+        <div class="hero__content">
+          <span class="eyebrow">AI Workflow Builder</span>
+          <h1 class="hero__title">Turn repeat tasks into <em>AI workflows</em> that run themselves.</h1>
+          <p class="hero__subhead">
+            Describe what you need. FlowPilot builds the multi-step AI workflow, connects it to your tools, and runs it whenever you want. No prompts to rewrite. No code to debug.
+          </p>
+          <div class="hero__ctas">
+            <a href="#how-it-works" class="btn btn--primary">
+              Try the interactive demo <span aria-hidden="true">→</span>
+            </a>
+            <a href="#how-it-works" class="btn btn--secondary">See how it works</a>
+          </div>
+          <p class="hero__micro">Concept project · No signup required</p>
+        </div>
+
+        <!-- Workflow visual panel -->
+        <div class="hero__visual">
+          <div class="hero__glow" aria-hidden="true"></div>
+
+          <div class="workflow-panel" role="img" aria-label="Example workflow: read Gmail, summarize with AI, post to Slack.">
+            <span class="eyebrow">Flow Preview</span>
+
+            <!-- Node 1: Gmail -->
+            <div class="workflow-node">
+              <div class="workflow-node__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="m2 7 10 6 10-6"/>
+                </svg>
+              </div>
+              <div class="workflow-node__text">
+                <div class="workflow-node__title">Read Gmail</div>
+                <div class="workflow-node__subtitle">Every weekday at 9am</div>
+              </div>
+            </div>
+
+            <div class="workflow-line" aria-hidden="true"></div>
+
+            <!-- Node 2: AI (featured) -->
+            <div class="workflow-node workflow-node--featured">
+              <div class="workflow-node__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                </svg>
+              </div>
+              <div class="workflow-node__text">
+                <div class="workflow-node__title">Summarize with AI</div>
+                <div class="workflow-node__subtitle">Extract top 3 themes</div>
+              </div>
+            </div>
+
+            <div class="workflow-line" aria-hidden="true"></div>
+
+            <!-- Node 3: Slack -->
+            <div class="workflow-node">
+              <div class="workflow-node__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+              </div>
+              <div class="workflow-node__text">
+                <div class="workflow-node__title">Post to Slack</div>
+                <div class="workflow-node__subtitle">#inbox-summary</div>
+              </div>
+            </div>
+
+            <div class="workflow-status">
+              <span class="workflow-status__dot" aria-hidden="true"></span>
+              <span>Running</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PAIN POINTS
+         ═══════════════════════════════════════════ -->
+    <section class="pain-points">
+      <div class="section-container">
+        <header class="section-header">
+          <h2 class="section-title">AI is smart. Using it is still manual.</h2>
+          <p class="section-subhead">The bottleneck isn't intelligence. It's orchestration.</p>
+        </header>
+
+        <div class="card-grid">
+          <!-- Card 1 -->
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 1 0 9-9"/>
+                <path d="M3 4v5h5"/>
+                <path d="M12 7v5l3 2"/>
+              </svg>
+            </div>
+            <h3 class="card__title">You keep re-explaining yourself</h3>
+            <p class="card__body">
+              Every new chat, you paste the same context, the same style guide, the same examples. AI has amnesia. You're the IT support.
+            </p>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M3 9h18"/>
+                <path d="M9 21V9"/>
+              </svg>
+            </div>
+            <h3 class="card__title">Outputs disappear after one use</h3>
+            <p class="card__body">
+              A great summary today. A good draft yesterday. Each one trapped in a conversation—never reused, never improved, never shared with your team.
+            </p>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+              </svg>
+            </div>
+            <h3 class="card__title">AI can't touch your actual work</h3>
+            <p class="card__body">
+              Your emails, docs, and Slack all live somewhere else. You're still the middleware—copying between the chat tab and everywhere real work happens.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FEATURES
+         ═══════════════════════════════════════════ -->
+    <section class="features" id="features">
+      <div class="section-container">
+        <header class="section-header">
+          <span class="eyebrow">Features</span>
+          <h2 class="section-title">Three things FlowPilot does that ChatGPT can't.</h2>
+        </header>
+
+        <div class="feature-list">
+
+          <!-- Feature 1: Visual canvas -->
+          <article class="feature">
+            <div class="feature__content">
+              <span class="eyebrow">01 · Visual workflow canvas</span>
+              <h3 class="feature__title" style="margin-top: 16px;">Build flows by dragging, not coding.</h3>
+              <p class="feature__body">
+                Drop blocks on a canvas. Connect them with a line. Run the whole thing with one click. Each block is an AI step, a data source, or an action—arrange them however your work actually happens.
+              </p>
+              <ul class="feature__list">
+                <li>20+ block types: LLM call, web fetch, Slack post, Notion write, conditional branch</li>
+                <li>Branch, loop, and merge—the flow handles the logic</li>
+                <li>Preview every step's output as you build</li>
+              </ul>
+            </div>
+
+            <div class="feature__visual">
+              <div class="visual-canvas" aria-hidden="true">
+                <div class="canvas-block canvas-block--1">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                    <path d="m2 7 10 6 10-6"/>
+                  </svg>
+                  Trigger
+                </div>
+                <div class="canvas-line canvas-line--1"></div>
+                <div class="canvas-block canvas-block--2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                  </svg>
+                  AI Step
+                </div>
+                <div class="canvas-line canvas-line--2"></div>
+                <div class="canvas-block canvas-block--3">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  </svg>
+                  Output
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Feature 2: Natural language (reverse) -->
+          <article class="feature feature--reverse">
+            <div class="feature__content">
+              <span class="eyebrow">02 · Plain English</span>
+              <h3 class="feature__title" style="margin-top: 16px;">Describe steps in plain English.</h3>
+              <p class="feature__body">
+                Tell FlowPilot what each step should do. It handles the prompts, the inputs, and the outputs. If it's wrong, fix it with a sentence—not a parameter panel.
+              </p>
+              <ul class="feature__list">
+                <li>"Summarize this email in three bullets" → configured</li>
+                <li>Edit any step by chatting with it</li>
+                <li>Version history, so no good iteration is ever lost</li>
+              </ul>
+            </div>
+
+            <div class="feature__visual">
+              <div class="visual-chat" aria-hidden="true">
+                <span class="chat-label chat-label--user">You</span>
+                <div class="chat-bubble chat-bubble--user">
+                  Summarize this email in three bullets, keep the tone neutral.
+                </div>
+                <span class="chat-label chat-label--ai">FlowPilot</span>
+                <div class="chat-bubble chat-bubble--ai">
+                  Got it. Step configured: Summarize input · max 3 bullets · tone: neutral.
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Feature 3: Integrations -->
+          <article class="feature">
+            <div class="feature__content">
+              <span class="eyebrow">03 · Connected tools</span>
+              <h3 class="feature__title" style="margin-top: 16px;">Reads your data. Writes to your stack.</h3>
+              <p class="feature__body">
+                FlowPilot plugs into the tools you already use. Pull context from Gmail, Notion, or any API. Push results to Slack, Linear, a spreadsheet, or an email draft. No more AI-in-a-tab.
+              </p>
+              <ul class="feature__list">
+                <li>30+ native integrations (Slack, Notion, Gmail, Linear, Sheets, and more)</li>
+                <li>Trigger on schedule, event, or manual run</li>
+                <li>Outputs go where your work lives</li>
+              </ul>
+            </div>
+
+            <div class="feature__visual">
+              <div class="integration-grid" aria-hidden="true">
+                <div class="integration-tile integration-tile--highlight">
+                  <div class="integration-tile-inner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="4" width="20" height="16" rx="2"/>
+                      <path d="m2 7 10 6 10-6"/>
+                    </svg>
+                    Gmail
+                  </div>
+                </div>
+                <div class="integration-tile">
+                  <div class="integration-tile-inner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                    Slack
+                  </div>
+                </div>
+                <div class="integration-tile integration-tile--highlight">
+                  <div class="integration-tile-inner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                      <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    Notion
+                  </div>
+                </div>
+                <div class="integration-tile">
+                  <div class="integration-tile-inner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="3" width="18" height="18" rx="2"/>
+                      <path d="M3 9h18"/>
+                      <path d="M9 21V9"/>
+                    </svg>
+                    Linear
+                  </div>
+                </div>
+                <div class="integration-tile">
+                  <div class="integration-tile-inner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="3" width="18" height="18" rx="2"/>
+                      <line x1="3" y1="9" x2="21" y2="9"/>
+                      <line x1="9" y1="21" x2="9" y2="9"/>
+                    </svg>
+                    Sheets
+                  </div>
+                </div>
+                <div class="integration-tile integration-tile--highlight">
+                  <div class="integration-tile-inner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="2" y1="12" x2="22" y2="12"/>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    HTTP
+                  </div>
+                </div>
+                <div class="integration-tile">
+                  <div class="integration-tile-inner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                      <polyline points="14 2 14 8 20 8"/>
+                    </svg>
+                    Drive
+                  </div>
+                </div>
+                <div class="integration-tile">
+                  <div class="integration-tile-inner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="2"/>
+                      <circle cx="4" cy="12" r="2"/>
+                      <circle cx="20" cy="12" r="2"/>
+                    </svg>
+                    +23
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         HOW IT WORKS (static — vertical stepper)
+         ═══════════════════════════════════════════ -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="section-container">
+        <header class="section-header">
+          <span class="eyebrow">How It Works</span>
+          <h2 class="section-title">From idea to running workflow, in four steps.</h2>
+          <p class="section-subhead">A typical flow takes minutes to build. Here's what that looks like.</p>
+        </header>
+
+        <ol class="steps">
+
+          <!-- Step 1 -->
+          <li class="step">
+            <div class="step__marker">
+              <div class="step__number">01</div>
+              <div class="step__line" aria-hidden="true"></div>
+            </div>
+            <div class="step__content">
+              <h3 class="step__title">Describe what you need</h3>
+              <p class="step__body">
+                Tell FlowPilot what you want to automate, in the same words you'd use to explain it to a coworker.
+              </p>
+              <blockquote class="step__quote">
+                "Every Monday, pull last week's customer tickets, summarize the top three themes, and post it in #product-updates."
+              </blockquote>
+            </div>
+          </li>
+
+          <!-- Step 2 -->
+          <li class="step">
+            <div class="step__marker">
+              <div class="step__number">02</div>
+              <div class="step__line" aria-hidden="true"></div>
+            </div>
+            <div class="step__content">
+              <h3 class="step__title">Design the flow</h3>
+              <p class="step__body">
+                FlowPilot drafts a workflow for you. Visual. Editable. Transparent. See every step. Tweak the prompt. Swap a tool. Add a branch. The canvas speaks your language.
+              </p>
+            </div>
+          </li>
+
+          <!-- Step 3 -->
+          <li class="step">
+            <div class="step__marker">
+              <div class="step__number">03</div>
+              <div class="step__line" aria-hidden="true"></div>
+            </div>
+            <div class="step__content">
+              <h3 class="step__title">Connect your tools</h3>
+              <p class="step__body">
+                Plug in the apps the flow needs. Authorize once, reuse forever. FlowPilot handles the API plumbing so you never touch a docs page.
+              </p>
+            </div>
+          </li>
+
+          <!-- Step 4 -->
+          <li class="step">
+            <div class="step__marker">
+              <div class="step__number">04</div>
+              <div class="step__line" aria-hidden="true"></div>
+            </div>
+            <div class="step__content">
+              <h3 class="step__title">Run it on your terms</h3>
+              <p class="step__body">
+                Trigger it manually. Put it on a schedule. Wire it to an event. Your workflow runs, reports back, and gets smarter every time you use it.
+              </p>
+            </div>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FINAL CTA
+         ═══════════════════════════════════════════ -->
+    <section class="final-cta">
+      <div class="final-cta__inner">
+        <h2 class="final-cta__title">Every repeat task deserves a flow.</h2>
+        <p class="final-cta__subhead">
+          FlowPilot is the AI workflow layer your team has been waiting for.
+        </p>
+        <a href="#how-it-works" class="btn btn--primary">
+          Try the interactive demo <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <a href="#" class="site-nav__brand" aria-label="FlowPilot home">
+          <span class="site-nav__logo" aria-hidden="true">▸</span>
+          <span>FlowPilot</span>
+        </a>
+        <p class="site-footer__tagline">Your AI, orchestrated.</p>
+        <p class="site-footer__note">
+          A concept project exploring the future of AI workflows. Built by Valen Hu for SI 539.
+        </p>
+      </div>
+
+      <div class="site-footer__col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#use-cases">Use Cases</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__col">
+        <h4>Project</h4>
+        <ul>
+          <li><a href="#">About this concept</a></li>
+          <li><a href="#">GitHub repo</a></li>
+          <li><a href="#">Design notes</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>© 2026 · Concept, not a real product.</span>
+      <span>Built with HTML, CSS, and a lot of coffee.</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="scripts/nav.js" defer></script>
+</body>
+</html>
