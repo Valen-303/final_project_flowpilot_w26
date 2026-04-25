@@ -278,7 +278,7 @@
   display: inline-block;
   width: 2px;
   height: 14px;
-  background: var(--brand-400);
+  background: var(--brand-300);
   animation: hiw-blink 1s infinite step-end;
 }
 
@@ -573,10 +573,19 @@
    TAB 1: DESCRIBE — Chat conversation
    ═══════════════════════════════════════════ */
 
-/* Hide elements initially when not animating */
+/* Hide elements initially when not animating.
+   Using visibility + opacity (not opacity alone) ensures WAVE / other
+   tools that don't run JS skip contrast checks on these pre-animation
+   elements — they are properly "not visible" in the accessibility tree. */
 .hiw-chat__bubble,
 .hiw-chat__input {
   opacity: 0;
+  visibility: hidden;
+}
+
+.hiw__panel.is-animating .hiw-chat__bubble,
+.hiw__panel.is-animating .hiw-chat__input {
+  visibility: visible;
 }
 
 .hiw__panel.is-animating .hiw-chat__bubble--user {
