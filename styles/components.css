@@ -723,7 +723,7 @@
   background: var(--bg-2);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  color: var(--brand-400);
+  color: var(--brand-300);
   margin-bottom: 20px;
 }
 
@@ -889,7 +889,7 @@
 .canvas-block svg {
   width: 14px;
   height: 14px;
-  color: var(--brand-400);
+  color: var(--brand-300);
 }
 
 .canvas-block--1 { top: 20px; left: 20px; }
@@ -954,7 +954,7 @@
 
 .chat-bubble--ai::before {
   content: "✦";
-  color: var(--brand-400);
+  color: var(--brand-300);
   margin-right: 6px;
   font-weight: 700;
 }
@@ -969,7 +969,7 @@
 }
 
 .chat-label--ai {
-  color: var(--brand-400);
+  color: var(--brand-300);
   align-self: flex-start;
 }
 
@@ -1094,7 +1094,7 @@
   font-family: var(--font-display);
   font-size: 15px;
   font-weight: 600;
-  color: var(--brand-400);
+  color: var(--brand-300);
   box-shadow: 0 0 20px var(--brand-glow-soft);
 }
 

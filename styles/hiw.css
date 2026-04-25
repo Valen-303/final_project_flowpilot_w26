@@ -59,7 +59,7 @@
 }
 
 .hiw__tab--active .hiw__tab-num {
-  color: var(--brand-400);
+  color: var(--brand-300);
 }
 
 .hiw__tab-label {
@@ -254,7 +254,7 @@
 }
 
 .hiw-chat__star {
-  color: var(--brand-400);
+  color: var(--brand-300);
   margin-right: 4px;
   font-weight: 700;
 }
