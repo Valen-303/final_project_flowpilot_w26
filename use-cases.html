@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Five example workflows built on FlowPilot — real scenarios for marketing, research, ops, and personal tasks.">
+  <meta name="theme-color" content="#0A0A0F">
+  <title>Use Cases — FlowPilot</title>
+
+  <meta property="og:title" content="Use Cases — FlowPilot">
+  <meta property="og:description" content="Five example workflows people would actually build with FlowPilot.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles/variables.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/use-cases.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════ -->
+  <header class="site-nav">
+    <div class="site-nav__inner">
+      <a href="index.html" class="site-nav__brand" aria-label="FlowPilot home">
+        <span class="site-nav__logo" aria-hidden="true">▸</span>
+        <span>FlowPilot</span>
+      </a>
+
+      <nav class="site-nav__links" aria-label="Main navigation">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="use-cases.html" aria-current="page">Use Cases</a>
+      </nav>
+
+      <div class="site-nav__cta">
+        <a href="index.html#how-it-works" class="btn btn--primary btn--sm">
+          Try the demo <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <button class="site-nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile overlay menu (outside header so position:fixed references the viewport) -->
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <div class="mobile-menu__header">
+      <button class="mobile-menu__close-top" type="button" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu__body">
+      <nav aria-label="Mobile navigation">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="use-cases.html" aria-current="page">Use Cases</a>
+        <a href="index.html#how-it-works" class="btn btn--primary">Try the demo →</a>
+      </nav>
+      <button class="mobile-menu__close" type="button" aria-label="Collapse menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="18 15 12 9 6 15"/>
+        </svg>
+        Collapse menu
+      </button>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ═══════════════════════════════════════════
+         PAGE HERO
+         ═══════════════════════════════════════════ -->
+    <section class="page-hero">
+      <div class="section-container reveal">
+        <span class="eyebrow">Use Cases</span>
+        <h1 class="page-hero__title">Real workflows. Real time saved.</h1>
+        <p class="page-hero__subhead">
+          Five example flows people would actually build with FlowPilot. Each one replaces a weekly meeting, a copy-paste marathon, or a Sunday-night panic.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FILTER CHIPS
+         ═══════════════════════════════════════════ -->
+    <section class="filter-section">
+      <div class="section-container">
+        <div class="filter-chips" role="tablist" aria-label="Filter use cases by category">
+          <button class="chip chip--active" data-filter="all" role="tab" aria-selected="true" type="button">All</button>
+          <button class="chip" data-filter="marketing" role="tab" aria-selected="false" type="button">Marketing</button>
+          <button class="chip" data-filter="research" role="tab" aria-selected="false" type="button">Research</button>
+          <button class="chip" data-filter="ops" role="tab" aria-selected="false" type="button">Ops</button>
+          <button class="chip" data-filter="personal" role="tab" aria-selected="false" type="button">Personal</button>
+        </div>
+
+        <div class="filter-count" aria-live="polite">
+          <span id="result-count">5</span> workflows
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         USE CASE CARDS
+         ═══════════════════════════════════════════ -->
+    <section class="cases-section">
+      <div class="section-container">
+        <div class="cases-grid" id="cases-grid">
+
+          <!-- Case 1: Weekly competitor digest -->
+          <a href="index.html#how-it-works" class="case-card" data-category="marketing">
+            <div class="case-card__header">
+              <span class="case-card__category">Marketing</span>
+              <span class="case-card__schedule">Weekly · Monday 9am</span>
+            </div>
+
+            <h2 class="case-card__title">Weekly competitor digest</h2>
+
+            <div class="case-card__flow" aria-hidden="true">
+              <div class="flow-node">
+                <div class="flow-node__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="2" y1="12" x2="22" y2="12"/>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                  </svg>
+                </div>
+                <span class="flow-node__label">Fetch</span>
+              </div>
+              <div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-node flow-node--featured">
+                <div class="flow-node__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                  </svg>
+                </div>
+                <span class="flow-node__label">Summarize</span>
+              </div>
+              <div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-node">
+                <div class="flow-node__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  </svg>
+                </div>
+                <span class="flow-node__label">Post</span>
+              </div>
+            </div>
+
+            <p class="case-card__body">
+              Fetches competitor blogs and tweets. Summarizes themes into three bullets. Posts to your <code>#market-watch</code> Slack channel every Monday morning.
+            </p>
+
+            <span class="case-card__cta">
+              Try in demo <span aria-hidden="true">→</span>
+            </span>
+          </a>
+
+          <!-- Case 2: Interview to insights -->
+          <a href="index.html#how-it-works" class="case-card" data-category="research">
+            <div class="case-card__header">
+              <span class="case-card__category">Research</span>
+              <span class="case-card__schedule">On upload</span>
+            </div>
+
+            <h2 class="case-card__title">Interview to insights</h2>
+
+            <div class="case-card__flow" aria-hidden="true">
+              <div class="flow-node">
+                <div class="flow-node__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                    <line x1="12" y1="19" x2="12" y2="23"/>
+                  </svg>
+                </div>
+                <span class="flow-node__label">Transcript</span>
+              </div>
+              <div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-node flow-node--featured">
+                <div class="flow-node__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                  </svg>
+                </div>
+                <span class="flow-node__label">Extract</span>
+              </div>
+              <div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-node">
+                <div class="flow-node__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                </div>
+                <span class="flow-node__label">Notion</span>
+              </div>
+            </div>
+
+            <p class="case-card__body">
+              Takes a Zoom or Otter transcript. Extracts quotes, pain points, and themes. Drops them into a structured Notion research doc, tagged by topic.
+            </p>
+
+            <span class="case-card__cta">
+              Try in demo <span aria-hidden="true">→</span>
+            </span>
+          </a>
+
+          <!-- Case 3: Content batch generator -->
+          <a href="index.html#how-it-works" class="case-card" data-category="marketing">
+            <div class="case-card__header">
+              <span class="case-card__category">Marketing</span>
+              <span class="case-card__schedule">On demand</span>
+            </div>
+
+            <h2 class="case-card__title">Content batch generator</h2>
+
+            <div class="case-card__flow" aria-hidden="true">
+              <div class="flow-node">
+                <div class="flow-node__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="9" y1="13" x2="15" y2="13"/>
+                    <line x1="9" y1="17" x2="15" y2="17"/>
+                  </svg>
+                </div>
+                <span class="flow-node__label">Blog</span>
+              </div>
+              <div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-node flow-node--featured">
+                <div class="flow-node__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                  </svg>
+                </div>
+                <span class="flow-node__label">Remix</span>
+              </div>
+              <div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-node">
+                <div class="flow-node__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <path d="M3 9h18"/>
+                    <path d="M9 21V9"/>
+                  </svg>
+                </div>
+                <span class="flow-node__label">Drafts</span>
+              </div>
+            </div>
+
+            <p class="case-card__body">
+              One blog post in. Ten social posts out — tailored for LinkedIn, X, and Instagram, each with tone matched to platform and a visuals brief attached.
+            </p>
+
+            <span class="case-card__cta">
+              Try in demo <span aria-hidden="true">→</span>
+            </span>
+          </a>
+
+          <!-- Case 4: Meeting-to-action engine -->
+          <a href="index.html#how-it-works" class="case-card" data-category="ops">
+            <div class="case-card__header">
+              <span class="case-card__category">Ops</span>
+              <span class="case-card__schedule">On recording</span>
+            </div>
+
+            <h2 class="case-card__title">Meeting-to-action engine</h2>
+
+            <div class="case-card__flow" aria-hidden="true">
+              <div class="flow-node">
+                <div class="flow-node__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="23 7 16 12 23 17 23 7"/>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                  </svg>
+                </div>
+                <span class="flow-node__label">Recording</span>
+              </div>
+              <div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-node flow-node--featured">
+                <div class="flow-node__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                  </svg>
+                </div>
+                <span class="flow-node__label">Parse</span>
+              </div>
+              <div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-node">
+                <div class="flow-node__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 11 12 14 22 4"/>
+                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                  </svg>
+                </div>
+                <span class="flow-node__label">Tasks</span>
+              </div>
+            </div>
+
+            <p class="case-card__body">
+              Meeting recording in. Action items parsed, owners assigned, tasks auto-created in Linear with context from the transcript. No one takes notes again.
+            </p>
+
+            <span class="case-card__cta">
+              Try in demo <span aria-hidden="true">→</span>
+            </span>
+          </a>
+
+          <!-- Case 5: Research paper pipeline -->
+          <a href="index.html#how-it-works" class="case-card" data-category="personal">
+            <div class="case-card__header">
+              <span class="case-card__category">Personal</span>
+              <span class="case-card__schedule">On URL paste</span>
+            </div>
+
+            <h2 class="case-card__title">Research paper pipeline</h2>
+
+            <div class="case-card__flow" aria-hidden="true">
+              <div class="flow-node">
+                <div class="flow-node__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                  </svg>
+                </div>
+                <span class="flow-node__label">arXiv URL</span>
+              </div>
+              <div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-node flow-node--featured">
+                <div class="flow-node__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                  </svg>
+                </div>
+                <span class="flow-node__label">Analyze</span>
+              </div>
+              <div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-node">
+                <div class="flow-node__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                  </svg>
+                </div>
+                <span class="flow-node__label">Digest</span>
+              </div>
+            </div>
+
+            <p class="case-card__body">
+              Drop any arXiv link. Get a plain-English summary, key figures extracted, and a "should I read this?" verdict based on your research interests.
+            </p>
+
+            <span class="case-card__cta">
+              Try in demo <span aria-hidden="true">→</span>
+            </span>
+          </a>
+
+        </div>
+
+        <!-- Empty state (shown when filter returns no results) -->
+        <div class="cases-empty" id="cases-empty" hidden>
+          <p>No workflows in this category yet. More coming soon.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         BOTTOM CTA
+         ═══════════════════════════════════════════ -->
+    <section class="final-cta">
+      <div class="final-cta__inner reveal">
+        <h2 class="final-cta__title">Pick one. Try it. Imagine your version.</h2>
+        <p class="final-cta__subhead">
+          Every workflow on this page takes less than five minutes to build in FlowPilot.
+        </p>
+        <a href="index.html#how-it-works" class="btn btn--primary">
+          Back to the demo <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <a href="index.html" class="site-nav__brand" aria-label="FlowPilot home">
+          <span class="site-nav__logo" aria-hidden="true">▸</span>
+          <span>FlowPilot</span>
+        </a>
+        <p class="site-footer__tagline">Your AI, orchestrated.</p>
+        <p class="site-footer__note">
+          A concept project exploring the future of AI workflows. Built by Valen Hu for SI 539.
+        </p>
+      </div>
+
+      <div class="site-footer__col">
+        <h3>Product</h3>
+        <ul>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="use-cases.html">Use Cases</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__col">
+        <h3>Project</h3>
+        <ul>
+          <li><a href="#">About this concept</a></li>
+          <li><a href="#">GitHub repo</a></li>
+          <li><a href="#">Design notes</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>© 2026 · Concept, not a real product.</span>
+      <span>Built with HTML, CSS, and a lot of coffee.</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="scripts/nav.js" defer></script>
+  <script src="scripts/use-cases.js" defer></script>
+  <script src="scripts/reveal.js" defer></script>
+</body>
+</html>

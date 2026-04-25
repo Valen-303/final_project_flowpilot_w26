@@ -182,3 +182,29 @@ p {
   white-space: nowrap;
   border: 0;
 }
+
+/* ─── Scroll reveal ─── */
+/* Elements with .reveal class start hidden + offset, then transition
+   to visible state when .revealed class is added by reveal.js
+   (via IntersectionObserver). Respects prefers-reduced-motion. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 700ms var(--ease-out),
+    transform 700ms var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="styles/variables.css">
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/hiw.css">
 </head>
 <body>
 
@@ -27,7 +28,7 @@
        ═══════════════════════════════════════════ -->
   <header class="site-nav">
     <div class="site-nav__inner">
-      <a href="#" class="site-nav__brand" aria-label="FlowPilot home">
+      <a href="index.html" class="site-nav__brand" aria-label="FlowPilot home">
         <span class="site-nav__logo" aria-hidden="true">▸</span>
         <span>FlowPilot</span>
       </a>
@@ -35,7 +36,7 @@
       <nav class="site-nav__links" aria-label="Main navigation">
         <a href="#features">Features</a>
         <a href="#how-it-works">How It Works</a>
-        <a href="#use-cases">Use Cases</a>
+        <a href="use-cases.html">Use Cases</a>
       </nav>
 
       <div class="site-nav__cta">
@@ -50,17 +51,33 @@
         <span></span>
       </button>
     </div>
+  </header>
 
-    <!-- Mobile overlay menu -->
-    <div class="mobile-menu" id="mobile-menu" hidden>
+  <!-- Mobile overlay menu (outside header so position:fixed references the viewport) -->
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <div class="mobile-menu__header">
+      <button class="mobile-menu__close-top" type="button" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu__body">
       <nav aria-label="Mobile navigation">
         <a href="#features">Features</a>
         <a href="#how-it-works">How It Works</a>
-        <a href="#use-cases">Use Cases</a>
+        <a href="use-cases.html">Use Cases</a>
         <a href="#how-it-works" class="btn btn--primary">Try the demo →</a>
       </nav>
+      <button class="mobile-menu__close" type="button" aria-label="Collapse menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="18 15 12 9 6 15"/>
+        </svg>
+        Collapse menu
+      </button>
     </div>
-  </header>
+  </div>
 
   <main id="main">
 
@@ -149,14 +166,14 @@
          ═══════════════════════════════════════════ -->
     <section class="pain-points">
       <div class="section-container">
-        <header class="section-header">
+        <header class="section-header reveal">
           <h2 class="section-title">AI is smart. Using it is still manual.</h2>
           <p class="section-subhead">The bottleneck isn't intelligence. It's orchestration.</p>
         </header>
 
         <div class="card-grid">
           <!-- Card 1 -->
-          <article class="card">
+          <article class="card reveal" data-reveal-delay="0">
             <div class="card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 12a9 9 0 1 0 9-9"/>
@@ -171,7 +188,7 @@
           </article>
 
           <!-- Card 2 -->
-          <article class="card">
+          <article class="card reveal" data-reveal-delay="80">
             <div class="card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="3" width="18" height="18" rx="2"/>
@@ -186,7 +203,7 @@
           </article>
 
           <!-- Card 3 -->
-          <article class="card">
+          <article class="card reveal" data-reveal-delay="160">
             <div class="card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"/>
@@ -207,7 +224,7 @@
          ═══════════════════════════════════════════ -->
     <section class="features" id="features">
       <div class="section-container">
-        <header class="section-header">
+        <header class="section-header reveal">
           <span class="eyebrow">Features</span>
           <h2 class="section-title">Three things FlowPilot does that ChatGPT can't.</h2>
         </header>
@@ -215,7 +232,7 @@
         <div class="feature-list">
 
           <!-- Feature 1: Visual canvas -->
-          <article class="feature">
+          <article class="feature reveal" data-reveal-delay="0">
             <div class="feature__content">
               <span class="eyebrow">01 · Visual workflow canvas</span>
               <h3 class="feature__title" style="margin-top: 16px;">Build flows by dragging, not coding.</h3>
@@ -257,7 +274,7 @@
           </article>
 
           <!-- Feature 2: Natural language (reverse) -->
-          <article class="feature feature--reverse">
+          <article class="feature feature--reverse reveal" data-reveal-delay="0">
             <div class="feature__content">
               <span class="eyebrow">02 · Plain English</span>
               <h3 class="feature__title" style="margin-top: 16px;">Describe steps in plain English.</h3>
@@ -286,7 +303,7 @@
           </article>
 
           <!-- Feature 3: Integrations -->
-          <article class="feature">
+          <article class="feature reveal" data-reveal-delay="0">
             <div class="feature__content">
               <span class="eyebrow">03 · Connected tools</span>
               <h3 class="feature__title" style="margin-top: 16px;">Reads your data. Writes to your stack.</h3>
@@ -386,78 +403,289 @@
     </section>
 
     <!-- ═══════════════════════════════════════════
-         HOW IT WORKS (static — vertical stepper)
+         HOW IT WORKS (interactive — horizontal tabs)
          ═══════════════════════════════════════════ -->
     <section class="how-it-works" id="how-it-works">
       <div class="section-container">
-        <header class="section-header">
+        <header class="section-header reveal">
           <span class="eyebrow">How It Works</span>
           <h2 class="section-title">From idea to running workflow, in four steps.</h2>
-          <p class="section-subhead">A typical flow takes minutes to build. Here's what that looks like.</p>
+          <p class="section-subhead">Click any tab or watch it auto-advance. Hover to pause.</p>
         </header>
 
-        <ol class="steps">
+        <div class="hiw" data-autoplay="5000">
+          <!-- Tab strip -->
+          <div class="hiw__tabs" role="tablist" aria-label="How FlowPilot works">
+            <button class="hiw__tab hiw__tab--active" role="tab" aria-selected="true" aria-controls="hiw-panel-1" id="hiw-tab-1" data-index="0" type="button">
+              <span class="hiw__tab-num">01</span>
+              <span class="hiw__tab-label">Describe</span>
+              <span class="hiw__tab-progress" aria-hidden="true"></span>
+            </button>
+            <button class="hiw__tab" role="tab" aria-selected="false" aria-controls="hiw-panel-2" id="hiw-tab-2" data-index="1" tabindex="-1" type="button">
+              <span class="hiw__tab-num">02</span>
+              <span class="hiw__tab-label">Design</span>
+              <span class="hiw__tab-progress" aria-hidden="true"></span>
+            </button>
+            <button class="hiw__tab" role="tab" aria-selected="false" aria-controls="hiw-panel-3" id="hiw-tab-3" data-index="2" tabindex="-1" type="button">
+              <span class="hiw__tab-num">03</span>
+              <span class="hiw__tab-label">Connect</span>
+              <span class="hiw__tab-progress" aria-hidden="true"></span>
+            </button>
+            <button class="hiw__tab" role="tab" aria-selected="false" aria-controls="hiw-panel-4" id="hiw-tab-4" data-index="3" tabindex="-1" type="button">
+              <span class="hiw__tab-num">04</span>
+              <span class="hiw__tab-label">Run</span>
+              <span class="hiw__tab-progress" aria-hidden="true"></span>
+            </button>
+          </div>
 
-          <!-- Step 1 -->
-          <li class="step">
-            <div class="step__marker">
-              <div class="step__number">01</div>
-              <div class="step__line" aria-hidden="true"></div>
-            </div>
-            <div class="step__content">
-              <h3 class="step__title">Describe what you need</h3>
-              <p class="step__body">
-                Tell FlowPilot what you want to automate, in the same words you'd use to explain it to a coworker.
-              </p>
-              <blockquote class="step__quote">
-                "Every Monday, pull last week's customer tickets, summarize the top three themes, and post it in #product-updates."
-              </blockquote>
-            </div>
-          </li>
+          <!-- Panels -->
+          <div class="hiw__panels">
 
-          <!-- Step 2 -->
-          <li class="step">
-            <div class="step__marker">
-              <div class="step__number">02</div>
-              <div class="step__line" aria-hidden="true"></div>
+            <!-- Panel 1: Describe -->
+            <div class="hiw__panel hiw__panel--active" role="tabpanel" id="hiw-panel-1" aria-labelledby="hiw-tab-1">
+              <div class="hiw__panel-content">
+                <div class="hiw__text">
+                  <h3 class="hiw__title">Describe what you need</h3>
+                  <p class="hiw__body">
+                    Tell FlowPilot what you want to automate, in the same words you'd use to explain it to a coworker. No prompt engineering. No syntax to learn.
+                  </p>
+                  <ul class="hiw__points">
+                    <li>Natural language, no special formatting</li>
+                    <li>FlowPilot asks follow-up questions if needed</li>
+                    <li>Your prompt becomes a reusable workflow spec</li>
+                  </ul>
+                </div>
+                <div class="hiw__mockup">
+                  <!-- Chat mockup -->
+                  <div class="hiw-chat" aria-hidden="true">
+                    <div class="hiw-chat__bubble hiw-chat__bubble--user">
+                      Every Monday, pull last week's customer tickets, summarize the top three themes, and post it in #product-updates.
+                    </div>
+                    <div class="hiw-chat__typing">
+                      <span class="hiw-chat__typing-dot"></span>
+                      <span class="hiw-chat__typing-dot"></span>
+                      <span class="hiw-chat__typing-dot"></span>
+                    </div>
+                    <div class="hiw-chat__bubble hiw-chat__bubble--ai">
+                      <span class="hiw-chat__star">✦</span>
+                      Got it. I'll build a weekly workflow that reads from Zendesk, summarizes with AI, and posts to Slack. Ready to design it?
+                    </div>
+                    <div class="hiw-chat__input">
+                      <span class="hiw-chat__typed">Schedule it to run every Monday</span>
+                      <span class="hiw-chat__placeholder">Type your next instruction...</span>
+                      <span class="hiw-chat__cursor"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="step__content">
-              <h3 class="step__title">Design the flow</h3>
-              <p class="step__body">
-                FlowPilot drafts a workflow for you. Visual. Editable. Transparent. See every step. Tweak the prompt. Swap a tool. Add a branch. The canvas speaks your language.
-              </p>
-            </div>
-          </li>
 
-          <!-- Step 3 -->
-          <li class="step">
-            <div class="step__marker">
-              <div class="step__number">03</div>
-              <div class="step__line" aria-hidden="true"></div>
-            </div>
-            <div class="step__content">
-              <h3 class="step__title">Connect your tools</h3>
-              <p class="step__body">
-                Plug in the apps the flow needs. Authorize once, reuse forever. FlowPilot handles the API plumbing so you never touch a docs page.
-              </p>
-            </div>
-          </li>
+            <!-- Panel 2: Design -->
+            <div class="hiw__panel" role="tabpanel" id="hiw-panel-2" aria-labelledby="hiw-tab-2" hidden>
+              <div class="hiw__panel-content">
+                <div class="hiw__text">
+                  <h3 class="hiw__title">Design the flow</h3>
+                  <p class="hiw__body">
+                    FlowPilot drafts a workflow for you. Visual. Editable. Transparent. See every step. Tweak the prompt. Swap a tool. Add a branch.
+                  </p>
+                  <ul class="hiw__points">
+                    <li>Drag, drop, and connect steps visually</li>
+                    <li>Preview every step's output as you build</li>
+                    <li>Add conditions and branches without code</li>
+                  </ul>
+                </div>
+                <div class="hiw__mockup">
+                  <!-- Canvas mockup (reused workflow panel style) -->
+                  <div class="hiw-canvas" aria-hidden="true">
+                    <span class="hiw-canvas__label">Flow Preview</span>
 
-          <!-- Step 4 -->
-          <li class="step">
-            <div class="step__marker">
-              <div class="step__number">04</div>
-              <div class="step__line" aria-hidden="true"></div>
-            </div>
-            <div class="step__content">
-              <h3 class="step__title">Run it on your terms</h3>
-              <p class="step__body">
-                Trigger it manually. Put it on a schedule. Wire it to an event. Your workflow runs, reports back, and gets smarter every time you use it.
-              </p>
-            </div>
-          </li>
+                    <div class="workflow-node">
+                      <div class="workflow-node__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="2" y="4" width="20" height="16" rx="2"/>
+                          <path d="m2 7 10 6 10-6"/>
+                        </svg>
+                      </div>
+                      <div class="workflow-node__text">
+                        <div class="workflow-node__title">Read Zendesk</div>
+                        <div class="workflow-node__subtitle">Last 7 days of tickets</div>
+                      </div>
+                    </div>
 
-        </ol>
+                    <div class="workflow-line"></div>
+
+                    <div class="workflow-node workflow-node--featured">
+                      <div class="workflow-node__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                        </svg>
+                      </div>
+                      <div class="workflow-node__text">
+                        <div class="workflow-node__title">Summarize themes</div>
+                        <div class="workflow-node__subtitle">Top 3, with volume counts</div>
+                      </div>
+                    </div>
+
+                    <div class="workflow-line"></div>
+
+                    <div class="workflow-node">
+                      <div class="workflow-node__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                      </div>
+                      <div class="workflow-node__text">
+                        <div class="workflow-node__title">Post to Slack</div>
+                        <div class="workflow-node__subtitle">#product-updates</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 3: Connect -->
+            <div class="hiw__panel" role="tabpanel" id="hiw-panel-3" aria-labelledby="hiw-tab-3" hidden>
+              <div class="hiw__panel-content">
+                <div class="hiw__text">
+                  <h3 class="hiw__title">Connect your tools</h3>
+                  <p class="hiw__body">
+                    Plug in the apps the flow needs. Authorize once, reuse forever. FlowPilot handles the API plumbing so you never touch a docs page.
+                  </p>
+                  <ul class="hiw__points">
+                    <li>30+ native integrations, one-click auth</li>
+                    <li>Shared across your workflows — connect once</li>
+                    <li>Or bring any HTTP endpoint via API block</li>
+                  </ul>
+                </div>
+                <div class="hiw__mockup">
+                  <!-- Integration grid mockup -->
+                  <div class="hiw-integrations" aria-hidden="true">
+                    <div class="hiw-int-tile hiw-int-tile--connected">
+                      <div class="hiw-int-tile__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="2" y="4" width="20" height="16" rx="2"/>
+                          <path d="m2 7 10 6 10-6"/>
+                        </svg>
+                      </div>
+                      <div class="hiw-int-tile__label">Zendesk</div>
+                      <span class="hiw-int-tile__status">Connected</span>
+                    </div>
+                    <div class="hiw-int-tile hiw-int-tile--connected">
+                      <div class="hiw-int-tile__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                      </div>
+                      <div class="hiw-int-tile__label">Slack</div>
+                      <span class="hiw-int-tile__status">Connected</span>
+                    </div>
+                    <div class="hiw-int-tile">
+                      <div class="hiw-int-tile__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                          <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                      </div>
+                      <div class="hiw-int-tile__label">Notion</div>
+                      <span class="hiw-int-tile__status hiw-int-tile__status--idle">Connect</span>
+                    </div>
+                    <div class="hiw-int-tile">
+                      <div class="hiw-int-tile__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="3" y="3" width="18" height="18" rx="2"/>
+                          <path d="M3 9h18"/>
+                          <path d="M9 21V9"/>
+                        </svg>
+                      </div>
+                      <div class="hiw-int-tile__label">Linear</div>
+                      <span class="hiw-int-tile__status hiw-int-tile__status--idle">Connect</span>
+                    </div>
+                    <div class="hiw-int-tile">
+                      <div class="hiw-int-tile__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="10"/>
+                          <line x1="2" y1="12" x2="22" y2="12"/>
+                          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                      </div>
+                      <div class="hiw-int-tile__label">HTTP</div>
+                      <span class="hiw-int-tile__status hiw-int-tile__status--idle">Connect</span>
+                    </div>
+                    <div class="hiw-int-tile hiw-int-tile--more">
+                      <div class="hiw-int-tile__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="2"/>
+                          <circle cx="4" cy="12" r="2"/>
+                          <circle cx="20" cy="12" r="2"/>
+                        </svg>
+                      </div>
+                      <div class="hiw-int-tile__label">+25 more</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 4: Run -->
+            <div class="hiw__panel" role="tabpanel" id="hiw-panel-4" aria-labelledby="hiw-tab-4" hidden>
+              <div class="hiw__panel-content">
+                <div class="hiw__text">
+                  <h3 class="hiw__title">Run it on your terms</h3>
+                  <p class="hiw__body">
+                    Trigger manually. Put it on a schedule. Wire it to an event. Your workflow runs, reports back, and gets smarter every time you use it.
+                  </p>
+                  <ul class="hiw__points">
+                    <li>Schedule by day, time, or interval</li>
+                    <li>Trigger from webhooks, Slack, or email</li>
+                    <li>Run logs for every execution, always searchable</li>
+                  </ul>
+                </div>
+                <div class="hiw__mockup">
+                  <!-- Schedule mockup -->
+                  <div class="hiw-schedule" aria-hidden="true">
+                    <div class="hiw-schedule__header">
+                      <span class="hiw-schedule__title">Trigger settings</span>
+                      <span class="hiw-schedule__badge">Active</span>
+                    </div>
+
+                    <div class="hiw-schedule__option hiw-schedule__option--active">
+                      <div class="hiw-schedule__radio">
+                        <span class="hiw-schedule__dot"></span>
+                      </div>
+                      <div class="hiw-schedule__text">
+                        <div class="hiw-schedule__label">Schedule</div>
+                        <div class="hiw-schedule__detail">Every Monday · 9:00 AM</div>
+                      </div>
+                    </div>
+
+                    <div class="hiw-schedule__option">
+                      <div class="hiw-schedule__radio"></div>
+                      <div class="hiw-schedule__text">
+                        <div class="hiw-schedule__label">Event</div>
+                        <div class="hiw-schedule__detail">Webhook · Slack · Email</div>
+                      </div>
+                    </div>
+
+                    <div class="hiw-schedule__option">
+                      <div class="hiw-schedule__radio"></div>
+                      <div class="hiw-schedule__text">
+                        <div class="hiw-schedule__label">Manual</div>
+                        <div class="hiw-schedule__detail">Run on demand</div>
+                      </div>
+                    </div>
+
+                    <div class="hiw-schedule__log">
+                      <span class="hiw-schedule__log-dot"></span>
+                      <span class="hiw-schedule__log-text">Last run: 2 hours ago · 3 themes posted</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
     </section>
 
@@ -465,7 +693,7 @@
          FINAL CTA
          ═══════════════════════════════════════════ -->
     <section class="final-cta">
-      <div class="final-cta__inner">
+      <div class="final-cta__inner reveal">
         <h2 class="final-cta__title">Every repeat task deserves a flow.</h2>
         <p class="final-cta__subhead">
           FlowPilot is the AI workflow layer your team has been waiting for.
@@ -484,7 +712,7 @@
   <footer class="site-footer">
     <div class="site-footer__inner">
       <div class="site-footer__brand">
-        <a href="#" class="site-nav__brand" aria-label="FlowPilot home">
+        <a href="index.html" class="site-nav__brand" aria-label="FlowPilot home">
           <span class="site-nav__logo" aria-hidden="true">▸</span>
           <span>FlowPilot</span>
         </a>
@@ -495,16 +723,16 @@
       </div>
 
       <div class="site-footer__col">
-        <h4>Product</h4>
+        <h3>Product</h3>
         <ul>
           <li><a href="#features">Features</a></li>
           <li><a href="#how-it-works">How It Works</a></li>
-          <li><a href="#use-cases">Use Cases</a></li>
+          <li><a href="use-cases.html">Use Cases</a></li>
         </ul>
       </div>
 
       <div class="site-footer__col">
-        <h4>Project</h4>
+        <h3>Project</h3>
         <ul>
           <li><a href="#">About this concept</a></li>
           <li><a href="#">GitHub repo</a></li>
@@ -521,5 +749,7 @@
 
   <!-- Scripts -->
   <script src="scripts/nav.js" defer></script>
+  <script src="scripts/hiw.js" defer></script>
+  <script src="scripts/reveal.js" defer></script>
 </body>
 </html>

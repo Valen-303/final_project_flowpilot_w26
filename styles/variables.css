@@ -18,7 +18,7 @@
   /* ─── Text ─── */
   --text-0: #F5F5F7;      /* primary */
   --text-1: #B8B8C7;      /* secondary / body */
-  --text-2: #6B6B7B;      /* tertiary / captions */
+  --text-2: #8B8B9B;      /* tertiary / captions (WCAG AA AA pass: 5.89:1 on bg-0) */
 
   /* ─── Brand (violet) ─── */
   --brand-300: #A78BFA;

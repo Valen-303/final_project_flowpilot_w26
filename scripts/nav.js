@@ -8,7 +8,8 @@
 
   const hamburger = document.querySelector('.site-nav__hamburger');
   const mobileMenu = document.querySelector('.mobile-menu');
-  const menuLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
+  const closeBtns = mobileMenu ? mobileMenu.querySelectorAll('.mobile-menu__close, .mobile-menu__close-top') : [];
+  const menuLinks = mobileMenu ? mobileMenu.querySelectorAll('nav a') : [];
 
   if (!hamburger || !mobileMenu) return;
 
@@ -17,10 +18,13 @@
     if (isOpen) {
       mobileMenu.hidden = false;
       hamburger.setAttribute('aria-label', 'Close menu');
+      // Lock both html and body to fully prevent background scroll on iOS/Safari
+      document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
     } else {
       mobileMenu.hidden = true;
       hamburger.setAttribute('aria-label', 'Open menu');
+      document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
     }
   }
@@ -31,7 +35,15 @@
     setMenuState(!isOpen);
   });
 
-  // Close when clicking a link
+  // Close when clicking any close button (top X or bottom Collapse)
+  closeBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      setMenuState(false);
+      hamburger.focus();
+    });
+  });
+
+  // Close when clicking a nav link
   menuLinks.forEach(function (link) {
     link.addEventListener('click', function () {
       setMenuState(false);
