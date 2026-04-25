@@ -1,0 +1,942 @@
+/* ============================================
+   FlowPilot — How It Works (Interactive Tabs)
+   Horizontal tab strip + panels with mockups.
+   ============================================ */
+
+.hiw {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* ═══════════════════════════════════════════
+   TAB STRIP
+   ═══════════════════════════════════════════ */
+
+.hiw__tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8px;
+  padding: 6px;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  margin-bottom: 40px;
+}
+
+.hiw__tab {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 14px 16px;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  overflow: hidden;
+  transition: background var(--duration-base) var(--ease-out),
+              color var(--duration-base) var(--ease-out);
+  text-align: left;
+}
+
+.hiw__tab:hover {
+  background: var(--bg-2);
+}
+
+.hiw__tab--active {
+  background: var(--bg-2);
+  box-shadow: 0 0 0 1px var(--border-lit), 0 0 24px var(--brand-glow-soft);
+}
+
+.hiw__tab-num {
+  font-family: "JetBrains Mono", "Geist Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-2);
+  letter-spacing: 0.04em;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.hiw__tab--active .hiw__tab-num {
+  color: var(--brand-300);
+}
+
+.hiw__tab-label {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-1);
+  transition: color var(--duration-base) var(--ease-out);
+  letter-spacing: -0.01em;
+}
+
+.hiw__tab--active .hiw__tab-label,
+.hiw__tab:hover .hiw__tab-label {
+  color: var(--text-0);
+}
+
+/* Auto-advance progress bar */
+.hiw__tab-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--brand-500);
+  transition: none;
+  border-radius: 1px;
+}
+
+.hiw__tab--active .hiw__tab-progress {
+  width: 100%;
+  transition: width linear;
+}
+
+.hiw.is-paused .hiw__tab--active .hiw__tab-progress {
+  transition: none;
+}
+
+@media (max-width: 640px) {
+  .hiw__tabs {
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .hiw__tab {
+    padding: 10px 12px;
+  }
+
+  .hiw__tab-label {
+    font-size: 14px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   PANELS
+   ═══════════════════════════════════════════ */
+
+.hiw__panels {
+  position: relative;
+  min-height: 480px;
+}
+
+.hiw__panel {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
+  pointer-events: none;
+}
+
+.hiw__panel[hidden] {
+  display: none;
+}
+
+.hiw__panel--active {
+  position: relative;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.hiw__panel-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  padding: 32px;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2xl);
+}
+
+@media (min-width: 900px) {
+  .hiw__panel-content {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    gap: 48px;
+    padding: 48px;
+    align-items: center;
+  }
+
+  .hiw__panels {
+    min-height: 520px;
+  }
+}
+
+.hiw__text {
+  min-width: 0;
+}
+
+.hiw__title {
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--text-0);
+  margin-bottom: 16px;
+}
+
+.hiw__body {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-1);
+  margin-bottom: 24px;
+}
+
+.hiw__points {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hiw__points li {
+  position: relative;
+  padding-left: 24px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-1);
+}
+
+.hiw__points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--brand-500);
+  opacity: 0.3;
+  box-shadow: 0 0 0 3px var(--brand-glow-soft);
+}
+
+.hiw__mockup {
+  min-width: 0;
+}
+
+/* ═══════════════════════════════════════════
+   MOCKUP 1: CHAT
+   ═══════════════════════════════════════════ */
+
+.hiw-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+}
+
+.hiw-chat__bubble {
+  max-width: 90%;
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  border-radius: var(--radius-lg);
+}
+
+.hiw-chat__bubble--user {
+  align-self: flex-end;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  color: var(--text-0);
+}
+
+.hiw-chat__bubble--ai {
+  align-self: flex-start;
+  background: var(--brand-glow-soft);
+  border: 1px solid var(--border-lit);
+  color: var(--text-0);
+}
+
+.hiw-chat__star {
+  color: var(--brand-300);
+  margin-right: 4px;
+  font-weight: 700;
+}
+
+.hiw-chat__input {
+  margin-top: 8px;
+  padding: 12px 14px;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--text-2);
+  position: relative;
+  min-height: 22px;
+}
+
+.hiw-chat__cursor {
+  display: inline-block;
+  width: 2px;
+  height: 14px;
+  background: var(--brand-300);
+  animation: hiw-blink 1s infinite step-end;
+}
+
+@keyframes hiw-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════
+   MOCKUP 2: CANVAS (reuse workflow-node styles)
+   ═══════════════════════════════════════════ */
+
+.hiw-canvas {
+  padding: 24px;
+  background:
+    linear-gradient(var(--bg-2), var(--bg-2)) padding-box,
+    var(--gradient-border) border-box;
+  border: 1px solid transparent;
+  border-radius: var(--radius-xl);
+}
+
+.hiw-canvas__label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  margin-bottom: 16px;
+}
+
+/* ═══════════════════════════════════════════
+   MOCKUP 3: INTEGRATIONS
+   ═══════════════════════════════════════════ */
+
+.hiw-integrations {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 20px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+}
+
+.hiw-int-tile {
+  position: relative;
+  padding: 16px 12px;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.hiw-int-tile--connected {
+  border-color: var(--border-lit);
+  background: var(--brand-glow-soft);
+}
+
+.hiw-int-tile__icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-1);
+}
+
+.hiw-int-tile__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.hiw-int-tile--connected .hiw-int-tile__icon {
+  color: var(--brand-300);
+}
+
+.hiw-int-tile__label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-0);
+}
+
+.hiw-int-tile__status {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--brand-500);
+  color: #fff;
+}
+
+.hiw-int-tile__status--idle {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+}
+
+.hiw-int-tile--more {
+  background: transparent;
+  border: 1px dashed var(--border);
+  color: var(--text-2);
+}
+
+.hiw-int-tile--more .hiw-int-tile__label {
+  color: var(--text-2);
+  font-size: 12px;
+}
+
+/* ═══════════════════════════════════════════
+   MOCKUP 4: SCHEDULE
+   ═══════════════════════════════════════════ */
+
+.hiw-schedule {
+  padding: 24px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+}
+
+.hiw-schedule__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hiw-schedule__title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-0);
+}
+
+.hiw-schedule__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  background: var(--brand-glow-soft);
+  border: 1px solid var(--border-lit);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--brand-300);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.hiw-schedule__option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 12px;
+  border-radius: var(--radius-md);
+  margin-bottom: 4px;
+  transition: background var(--duration-base) var(--ease-out);
+}
+
+.hiw-schedule__option--active {
+  background: var(--brand-glow-soft);
+  border: 1px solid var(--border-lit);
+}
+
+.hiw-schedule__radio {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hiw-schedule__option--active .hiw-schedule__radio {
+  border-color: var(--brand-500);
+}
+
+.hiw-schedule__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand-500);
+}
+
+.hiw-schedule__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.hiw-schedule__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-0);
+  margin-bottom: 2px;
+}
+
+.hiw-schedule__detail {
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.hiw-schedule__log {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.hiw-schedule__log-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 6px var(--accent-cyan);
+}
+
+.hiw-schedule__log-text {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ═══════════════════════════════════════════
+   MOCKUP ANIMATIONS
+   Triggered by .is-animating on .hiw__panel
+   Each panel plays a choreographed sequence.
+   ═══════════════════════════════════════════ */
+
+/* ─── Universal entry: soft fade-in for any mockup child ─── */
+@keyframes hiw-fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hiw-fadeInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes hiw-fadeInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Respect reduced-motion preference for all panel animations */
+@media (prefers-reduced-motion: reduce) {
+  .hiw__panel.is-animating .hiw-chat__bubble,
+  .hiw__panel.is-animating .hiw-chat__input,
+  .hiw__panel.is-animating .workflow-node,
+  .hiw__panel.is-animating .workflow-line,
+  .hiw__panel.is-animating .hiw-int-tile,
+  .hiw__panel.is-animating .hiw-schedule__option,
+  .hiw__panel.is-animating .hiw-schedule__log,
+  .hiw__panel.is-animating .hiw-chat__typing,
+  .hiw__panel.is-animating .hiw-chat__typed,
+  .hiw__panel.is-animating .hiw-int-tile__status {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   TAB 1: DESCRIBE — Chat conversation
+   ═══════════════════════════════════════════ */
+
+/* Hide elements initially when not animating.
+   Using visibility + opacity (not opacity alone) ensures WAVE / other
+   tools that don't run JS skip contrast checks on these pre-animation
+   elements — they are properly "not visible" in the accessibility tree. */
+.hiw-chat__bubble,
+.hiw-chat__input {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hiw__panel.is-animating .hiw-chat__bubble,
+.hiw__panel.is-animating .hiw-chat__input {
+  visibility: visible;
+}
+
+.hiw__panel.is-animating .hiw-chat__bubble--user {
+  animation: hiw-fadeInFromRight 500ms var(--ease-out) 0ms forwards;
+}
+
+.hiw__panel.is-animating .hiw-chat__typing {
+  animation: hiw-fadeInFromLeft 400ms var(--ease-out) 800ms forwards;
+}
+
+.hiw__panel.is-animating .hiw-chat__bubble--ai {
+  animation: hiw-fadeInFromLeft 500ms var(--ease-out) 1600ms forwards;
+}
+
+.hiw__panel.is-animating .hiw-chat__input {
+  animation: hiw-fadeInUp 400ms var(--ease-out) 2200ms forwards;
+}
+
+/* "Thinking" dots bubble (placeholder before AI responds) */
+.hiw-chat__typing {
+  align-self: flex-start;
+  display: none;
+  padding: 14px 18px;
+  background: var(--brand-glow-soft);
+  border: 1px solid var(--border-lit);
+  border-radius: var(--radius-lg);
+  opacity: 0;
+}
+
+.hiw__panel.is-animating .hiw-chat__typing {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+/* Hide typing dots once AI bubble arrives */
+.hiw__panel.is-animating .hiw-chat__typing {
+  animation:
+    hiw-fadeInFromLeft 400ms var(--ease-out) 800ms forwards,
+    hiw-typing-hide 0ms linear 1700ms forwards;
+}
+
+@keyframes hiw-typing-hide {
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.hiw-chat__typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand-400);
+  animation: hiw-dot-bounce 1s infinite ease-in-out;
+}
+
+.hiw-chat__typing-dot:nth-child(2) {
+  animation-delay: 150ms;
+}
+
+.hiw-chat__typing-dot:nth-child(3) {
+  animation-delay: 300ms;
+}
+
+@keyframes hiw-dot-bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+/* Typewriter text in the input field */
+.hiw-chat__typed {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--text-0);
+  max-width: 0;
+  vertical-align: bottom;
+}
+
+.hiw__panel.is-animating .hiw-chat__typed {
+  animation: hiw-typewriter 1400ms steps(26, end) 2800ms forwards;
+}
+
+@keyframes hiw-typewriter {
+  from { max-width: 0; }
+  to { max-width: 26ch; }
+}
+
+/* Hide placeholder text while typed text is showing */
+.hiw-chat__placeholder {
+  color: var(--text-2);
+  transition: opacity 200ms var(--ease-out);
+}
+
+.hiw__panel.is-animating .hiw-chat__placeholder {
+  animation: hiw-placeholder-hide 0ms linear 2800ms forwards;
+}
+
+@keyframes hiw-placeholder-hide {
+  to { opacity: 0; display: none; }
+}
+
+/* ═══════════════════════════════════════════
+   TAB 2: DESIGN — Canvas nodes drawing in
+   ═══════════════════════════════════════════ */
+
+/* Initial hidden state */
+.hiw-canvas .workflow-node,
+.hiw-canvas .workflow-line {
+  opacity: 0;
+}
+
+.hiw-canvas .workflow-line {
+  transform: scaleY(0);
+  transform-origin: top center;
+  position: relative;
+  overflow: visible;
+}
+
+/* Sequential reveal: nodes + lines */
+.hiw__panel.is-animating .hiw-canvas .workflow-node:nth-of-type(1) {
+  animation: hiw-fadeInUp 500ms var(--ease-out) 100ms forwards;
+}
+
+.hiw__panel.is-animating .hiw-canvas .workflow-line:nth-of-type(2) {
+  animation: hiw-line-draw 400ms var(--ease-out) 600ms forwards;
+}
+
+.hiw__panel.is-animating .hiw-canvas .workflow-node:nth-of-type(3) {
+  animation: hiw-fadeInUp 500ms var(--ease-out) 1000ms forwards;
+}
+
+.hiw__panel.is-animating .hiw-canvas .workflow-line:nth-of-type(4) {
+  animation: hiw-line-draw 400ms var(--ease-out) 1500ms forwards;
+}
+
+.hiw__panel.is-animating .hiw-canvas .workflow-node:nth-of-type(5) {
+  animation: hiw-fadeInUp 500ms var(--ease-out) 1900ms forwards;
+}
+
+@keyframes hiw-line-draw {
+  from {
+    opacity: 0.7;
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 0.7;
+    transform: scaleY(1);
+  }
+}
+
+/* Featured node glow pulse — same visual language as Hero */
+.hiw__panel.is-animating .hiw-canvas .workflow-node--featured {
+  animation:
+    hiw-fadeInUp 500ms var(--ease-out) 1000ms forwards,
+    hiw-node-pulse 2.4s ease-in-out 2500ms infinite;
+}
+
+@keyframes hiw-node-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px var(--brand-500),
+      0 0 20px var(--brand-glow-soft);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px var(--brand-500),
+      0 0 36px var(--brand-glow);
+  }
+}
+
+/* Flowing pulse dots on connection lines — matches Hero workflow panel.
+   The ::after pseudo-element on each line carries a light dot that travels top → bottom.
+   Two lines staggered so the pulse feels like one signal traveling end-to-end. */
+.hiw-canvas .workflow-line::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -3px;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand-300);
+  box-shadow: 0 0 10px var(--brand-400);
+  opacity: 0;
+}
+
+.hiw__panel.is-animating .hiw-canvas .workflow-line:nth-of-type(2)::after {
+  animation: hiw-pulse-travel 3s ease-in-out 2500ms infinite;
+}
+
+.hiw__panel.is-animating .hiw-canvas .workflow-line:nth-of-type(4)::after {
+  animation: hiw-pulse-travel 3s ease-in-out 4000ms infinite;
+}
+
+@keyframes hiw-pulse-travel {
+  0% {
+    top: -3px;
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  50% {
+    top: calc(100% - 3px);
+    opacity: 1;
+  }
+  60% { opacity: 0; }
+  100% {
+    top: calc(100% - 3px);
+    opacity: 0;
+  }
+}
+
+.hiw-canvas {
+  position: relative;
+}
+
+/* ═══════════════════════════════════════════
+   TAB 3: CONNECT — Integration tiles + Connect flow
+   ═══════════════════════════════════════════ */
+
+.hiw-int-tile {
+  opacity: 0;
+}
+
+/* Waterfall fade-in: 6 tiles cascade */
+.hiw__panel.is-animating .hiw-int-tile:nth-of-type(1) {
+  animation: hiw-fadeInUp 400ms var(--ease-out) 0ms forwards;
+}
+.hiw__panel.is-animating .hiw-int-tile:nth-of-type(2) {
+  animation: hiw-fadeInUp 400ms var(--ease-out) 80ms forwards;
+}
+.hiw__panel.is-animating .hiw-int-tile:nth-of-type(3) {
+  animation:
+    hiw-fadeInUp 400ms var(--ease-out) 160ms forwards,
+    hiw-tile-connect 1200ms var(--ease-out) 1400ms forwards;
+}
+.hiw__panel.is-animating .hiw-int-tile:nth-of-type(4) {
+  animation: hiw-fadeInUp 400ms var(--ease-out) 240ms forwards;
+}
+.hiw__panel.is-animating .hiw-int-tile:nth-of-type(5) {
+  animation: hiw-fadeInUp 400ms var(--ease-out) 320ms forwards;
+}
+.hiw__panel.is-animating .hiw-int-tile:nth-of-type(6) {
+  animation: hiw-fadeInUp 400ms var(--ease-out) 400ms forwards;
+}
+
+/* The 3rd tile (Notion) transitions from idle to connected mid-animation */
+@keyframes hiw-tile-connect {
+  0% {
+    background: var(--bg-1);
+    border-color: var(--border);
+  }
+  100% {
+    background: var(--brand-glow-soft);
+    border-color: var(--border-lit);
+  }
+}
+
+/* Notion status label transitions */
+.hiw-int-tile:nth-of-type(3) .hiw-int-tile__status--idle {
+  position: relative;
+}
+
+.hiw__panel.is-animating .hiw-int-tile:nth-of-type(3) .hiw-int-tile__status {
+  animation: hiw-status-swap 1200ms ease-in-out 1400ms forwards;
+}
+
+@keyframes hiw-status-swap {
+  0% {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    color: var(--text-2);
+  }
+  40% {
+    background: var(--bg-2);
+    border: 1px solid var(--border-lit);
+    color: var(--brand-300);
+  }
+  100% {
+    background: var(--brand-500);
+    border: 1px solid transparent;
+    color: #fff;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   TAB 4: RUN — Trigger options + log pulse
+   ═══════════════════════════════════════════ */
+
+.hiw-schedule__header,
+.hiw-schedule__option,
+.hiw-schedule__log {
+  opacity: 0;
+}
+
+.hiw__panel.is-animating .hiw-schedule__header {
+  animation: hiw-fadeInUp 400ms var(--ease-out) 0ms forwards;
+}
+
+.hiw__panel.is-animating .hiw-schedule__option:nth-of-type(2) {
+  animation: hiw-fadeInFromLeft 400ms var(--ease-out) 300ms forwards;
+}
+.hiw__panel.is-animating .hiw-schedule__option:nth-of-type(3) {
+  animation: hiw-fadeInFromLeft 400ms var(--ease-out) 500ms forwards;
+}
+.hiw__panel.is-animating .hiw-schedule__option:nth-of-type(4) {
+  animation: hiw-fadeInFromLeft 400ms var(--ease-out) 700ms forwards;
+}
+
+/* Radio dot pops into existence */
+.hiw-schedule__option--active .hiw-schedule__dot {
+  transform: scale(0);
+}
+
+.hiw__panel.is-animating .hiw-schedule__option--active .hiw-schedule__dot {
+  animation: hiw-dot-pop 400ms cubic-bezier(0.34, 1.56, 0.64, 1) 1100ms forwards;
+}
+
+@keyframes hiw-dot-pop {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Log region fade-in + pulsing cyan dot */
+.hiw__panel.is-animating .hiw-schedule__log {
+  animation: hiw-fadeInUp 400ms var(--ease-out) 1500ms forwards;
+}
+
+.hiw__panel.is-animating .hiw-schedule__log-dot {
+  animation: hiw-log-pulse 1.8s ease-in-out 1900ms infinite;
+}
+
+@keyframes hiw-log-pulse {
+  0%, 100% {
+    box-shadow: 0 0 6px var(--accent-cyan);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 14px var(--accent-cyan);
+    opacity: 0.7;
+  }
+}
