@@ -23,18 +23,18 @@
   /* ─── Brand (violet) ─── */
   --brand-300: #A78BFA;
   --brand-400: #8B5CF6;
-  --brand-500: #7C3AED;   /* PRIMARY */
+  --brand-500: #7840E8;   /* PRIMARY · synced with logo gradient start */
   --brand-600: #6D28D9;   /* hover */
   --brand-700: #5B21B6;   /* pressed */
-  --brand-glow: rgba(124, 58, 237, 0.4);
-  --brand-glow-soft: rgba(124, 58, 237, 0.15);
+  --brand-glow: rgba(120, 64, 232, 0.4);
+  --brand-glow-soft: rgba(120, 64, 232, 0.15);
 
   /* ─── Accents ─── */
   --accent-cyan: #22D3EE;
   --accent-pink: #EC4899;
 
   /* ─── Gradients ─── */
-  --gradient-hero: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);
+  --gradient-hero: linear-gradient(135deg, #7840E8 0%, #E050A8 100%);
   --gradient-border: linear-gradient(135deg, #7C3AED 0%, #22D3EE 100%);
 
   /* ─── Typography ─── */

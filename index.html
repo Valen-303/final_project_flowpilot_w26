@@ -6,6 +6,26 @@
   <meta name="description" content="FlowPilot lets non-technical users build multi-step AI workflows visually. A concept product showcase by Valen Hu for SI 539.">
   <meta name="theme-color" content="#0A0A0F">
   <title>FlowPilot — Your AI, orchestrated.</title>
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="assets/flowpilot-gradient-transparent.svg">
+  <link rel="icon" type="image/x-icon" href="assets/flowpilot-favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/flowpilot-gradient-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/flowpilot-gradient-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/flowpilot-gradient-180.png">
+
+  <!-- Open Graph (social sharing) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="FlowPilot — Your AI, orchestrated.">
+  <meta property="og:description" content="Visual AI workflow orchestration. Build multi-step AI workflows in plain language.">
+  <meta property="og:image" content="assets/flowpilot-og-card-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FlowPilot — Your AI, orchestrated.">
+  <meta name="twitter:description" content="Visual AI workflow orchestration.">
+  <meta name="twitter:image" content="assets/flowpilot-og-card-1200x630.png">
 
   <!-- Fonts: Geist (display) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +37,7 @@
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/components.css">
   <link rel="stylesheet" href="styles/hiw.css">
+  <link rel="stylesheet" href="styles/why-built.css">
 </head>
 <body>
 
@@ -28,10 +49,10 @@
        ═══════════════════════════════════════════ -->
   <header class="site-nav">
     <div class="site-nav__inner">
-      <a href="index.html" class="site-nav__brand" aria-label="FlowPilot home">
-        <span class="site-nav__logo" aria-hidden="true">▸</span>
-        <span>FlowPilot</span>
-      </a>
+        <a href="index.html" class="site-nav__brand" aria-label="FlowPilot home">
+         <img src="assets/flowpilot-gradient-transparent.svg" alt="" class="site-nav__logo" aria-hidden="true">
+         <span class="site-nav__wordmark">FlowPilot</span>
+        </a>
 
       <nav class="site-nav__links" aria-label="Main navigation">
         <a href="#features">Features</a>
@@ -162,6 +183,58 @@
     </section>
 
     <!-- ═══════════════════════════════════════════
+         BUILT FOR (B-1)
+         ═══════════════════════════════════════════ -->
+    <section class="built-for">
+      <div class="section-container">
+        <span class="eyebrow reveal">Built for</span>
+        <h2 class="built-for__statement reveal">
+          Founders running multi-tool businesses without an engineering team.
+        </h2>
+        <p class="built-for__sub reveal">
+          You know what should be automated. You just don't have a developer to build it.
+        </p>
+
+        <ul class="built-for__scenarios">
+          <li class="scenario reveal">
+            <span class="scenario__label">Lead enrichment</span>
+            <span class="scenario__flow">
+              <span class="scenario__step">New signup</span>
+              <span class="scenario__arrow" aria-hidden="true">→</span>
+              <span class="scenario__step">enrich profile</span>
+              <span class="scenario__arrow" aria-hidden="true">→</span>
+              <span class="scenario__step">score</span>
+              <span class="scenario__arrow" aria-hidden="true">→</span>
+              <span class="scenario__step">notify sales</span>
+            </span>
+          </li>
+          <li class="scenario reveal">
+            <span class="scenario__label">Customer follow-up</span>
+            <span class="scenario__flow">
+              <span class="scenario__step">Ticket closed</span>
+              <span class="scenario__arrow" aria-hidden="true">→</span>
+              <span class="scenario__step">schedule check-in</span>
+              <span class="scenario__arrow" aria-hidden="true">→</span>
+              <span class="scenario__step">log to CRM</span>
+            </span>
+          </li>
+          <li class="scenario reveal">
+            <span class="scenario__label">Content distribution</span>
+            <span class="scenario__flow">
+              <span class="scenario__step">Draft published</span>
+              <span class="scenario__arrow" aria-hidden="true">→</span>
+              <span class="scenario__step">reformat</span>
+              <span class="scenario__arrow" aria-hidden="true">→</span>
+              <span class="scenario__step">cross-post</span>
+              <span class="scenario__arrow" aria-hidden="true">→</span>
+              <span class="scenario__step">track engagement</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
          PAIN POINTS
          ═══════════════════════════════════════════ -->
     <section class="pain-points">
@@ -216,6 +289,93 @@
             </p>
           </article>
         </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHY FLOWPILOT (A-1)
+         ═══════════════════════════════════════════ -->
+    <section class="why-flowpilot section-padding" id="why-flowpilot">
+      <div class="section-container">
+        <header class="section-header reveal">
+          <span class="eyebrow">Why FlowPilot</span>
+          <h2 class="section-title">A workflow layer, not another chatbot.</h2>
+          <p class="section-subhead">
+            AI got smart. Workflows didn't catch up. FlowPilot fills the gap between one-shot prompts and rigid automation.
+          </p>
+        </header>
+
+        <div class="comparison reveal">
+          <div class="comparison__row comparison__row--head">
+            <div class="comparison__cell comparison__cell--label" aria-hidden="true"></div>
+            <div class="comparison__cell">ChatGPT-style</div>
+            <div class="comparison__cell">Zapier-style</div>
+            <div class="comparison__cell comparison__cell--ours">FlowPilot</div>
+          </div>
+
+          <div class="comparison__row">
+            <div class="comparison__cell comparison__cell--label">Multi-step orchestration</div>
+            <div class="comparison__cell" data-state="no">
+              <span class="comparison__icon" aria-label="No">✕</span>
+              <span class="comparison__note">One-shot only</span>
+            </div>
+            <div class="comparison__cell" data-state="partial">
+              <span class="comparison__icon" aria-label="Partial">◐</span>
+              <span class="comparison__note">Rigid rules</span>
+            </div>
+            <div class="comparison__cell comparison__cell--ours" data-state="yes">
+              <span class="comparison__icon" aria-label="Yes">✓</span>
+              <span class="comparison__note">AI-native steps</span>
+            </div>
+          </div>
+
+          <div class="comparison__row">
+            <div class="comparison__cell comparison__cell--label">AI-native reasoning</div>
+            <div class="comparison__cell" data-state="yes">
+              <span class="comparison__icon" aria-label="Yes">✓</span>
+            </div>
+            <div class="comparison__cell" data-state="partial">
+              <span class="comparison__icon" aria-label="Partial">◐</span>
+              <span class="comparison__note">Bolted on</span>
+            </div>
+            <div class="comparison__cell comparison__cell--ours" data-state="yes">
+              <span class="comparison__icon" aria-label="Yes">✓</span>
+            </div>
+          </div>
+
+          <div class="comparison__row">
+            <div class="comparison__cell comparison__cell--label">Built for non-coders</div>
+            <div class="comparison__cell" data-state="yes">
+              <span class="comparison__icon" aria-label="Yes">✓</span>
+            </div>
+            <div class="comparison__cell" data-state="partial">
+              <span class="comparison__icon" aria-label="Partial">◐</span>
+              <span class="comparison__note">Steep curve</span>
+            </div>
+            <div class="comparison__cell comparison__cell--ours" data-state="yes">
+              <span class="comparison__icon" aria-label="Yes">✓</span>
+            </div>
+          </div>
+
+          <div class="comparison__row">
+            <div class="comparison__cell comparison__cell--label">Reusable across runs</div>
+            <div class="comparison__cell" data-state="no">
+              <span class="comparison__icon" aria-label="No">✕</span>
+              <span class="comparison__note">Re-prompt each time</span>
+            </div>
+            <div class="comparison__cell" data-state="yes">
+              <span class="comparison__icon" aria-label="Yes">✓</span>
+            </div>
+            <div class="comparison__cell comparison__cell--ours" data-state="yes">
+              <span class="comparison__icon" aria-label="Yes">✓</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="why-flowpilot__pull reveal">
+          AI-native, multi-step, no-code, reusable.
+          <span class="why-flowpilot__pull-accent">All four at once — that's the gap.</span>
+        </p>
       </div>
     </section>
 
@@ -690,13 +850,146 @@
     </section>
 
     <!-- ═══════════════════════════════════════════
+         BUILT ON (A-2)
+         ═══════════════════════════════════════════ -->
+    <section class="built-on section-padding" id="built-on">
+      <div class="section-container">
+        <header class="section-header reveal">
+          <span class="eyebrow">Built On</span>
+          <h2 class="section-title">Built for production from day one.</h2>
+          <p class="section-subhead">
+            Every design choice — model routing, cost ceilings, async execution, graceful failure — exists because production AI doesn't tolerate hand-waving.
+          </p>
+        </header>
+
+        <div class="built-on__grid">
+
+          <article class="bo-card reveal">
+            <span class="bo-card__eyebrow">Model Routing</span>
+            <h3 class="bo-card__title">Right model, right step.</h3>
+            <p class="bo-card__body">
+              Claude Sonnet for reasoning. Haiku for classification. GPT for structured output. The router picks per step — not per workflow.
+            </p>
+            <div class="bo-card__stat">
+              <span class="bo-card__stat-value">800ms</span>
+              <span class="bo-card__stat-label">avg latency / step</span>
+            </div>
+          </article>
+
+          <article class="bo-card reveal">
+            <span class="bo-card__eyebrow">Cost per workflow</span>
+            <h3 class="bo-card__title">Predictable, capped.</h3>
+            <p class="bo-card__body">
+              Hard caps per workspace. Cost preview before every run. No surprise bills when a workflow loops harder than expected.
+            </p>
+            <div class="bo-card__stat">
+              <span class="bo-card__stat-value">$0.04</span>
+              <span class="bo-card__stat-label">avg per run</span>
+            </div>
+          </article>
+
+          <article class="bo-card reveal">
+            <span class="bo-card__eyebrow">Latency design</span>
+            <h3 class="bo-card__title">Async by default.</h3>
+            <p class="bo-card__body">
+              Workflows run in the background. Get notified when done. The UI never blocks on AI — because users shouldn't wait on a model.
+            </p>
+            <div class="bo-card__stat">
+              <span class="bo-card__stat-value">&lt;2s</span>
+              <span class="bo-card__stat-label">p95 to start</span>
+            </div>
+          </article>
+
+          <article class="bo-card reveal">
+            <span class="bo-card__eyebrow">Reliability</span>
+            <h3 class="bo-card__title">Graceful degradation.</h3>
+            <p class="bo-card__body">
+              Step fails → retry with fallback model. Still fails → human handoff with full execution log. No silent breakage.
+            </p>
+            <div class="bo-card__stat">
+              <span class="bo-card__stat-value">99.2%</span>
+              <span class="bo-card__stat-label">step success rate</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         HARD QUESTIONS (A-3)
+         ═══════════════════════════════════════════ -->
+    <section class="hard-questions section-padding" id="hard-questions">
+      <div class="section-container">
+        <header class="section-header reveal">
+          <span class="eyebrow">Hard Questions</span>
+          <h2 class="section-title">We've heard them. Here's where we land.</h2>
+        </header>
+
+        <div class="hq-list">
+
+          <details class="hq-item reveal">
+            <summary class="hq-item__question">
+              <span class="hq-item__text">Why won't OpenAI, Anthropic, or Google just build this?</span>
+              <span class="hq-item__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="hq-item__answer">
+              <p>Plausibly they will. Custom GPTs and Claude Skills already point at the workflow direction.</p>
+              <p>But foundation labs optimize for <em>model capability</em>, not <em>business workflow integration</em>. Building a real workflow product means owning OAuth flows for Slack, Notion, Salesforce, HubSpot, retry logic, audit logs, multi-tenant cost ceilings, role-based permissions — surface area that's orthogonal to model research.</p>
+              <p class="hq-item__punch">The pattern repeats: AWS could have built Stripe. Google could have built Notion. They didn't, because verticalized integration is a different game than infrastructure.</p>
+            </div>
+          </details>
+
+          <details class="hq-item reveal">
+            <summary class="hq-item__question">
+              <span class="hq-item__text">Isn't this just Zapier with an LLM bolted on?</span>
+              <span class="hq-item__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="hq-item__answer">
+              <p>Zapier connects apps via deterministic if-this-then-that triggers. FlowPilot orchestrates <em>AI reasoning</em> across steps — meaning each step can interpret unstructured input, decide what to do, and adjust the flow's trajectory.</p>
+              <p>Concretely: a Zapier zap can't "summarize this email and decide if it's a sales lead, then route to the right pipeline based on the topic." Each italicized verb requires reasoning, not branching logic.</p>
+              <p class="hq-item__punch">Zapier is a graph of triggers. FlowPilot is a graph of decisions.</p>
+            </div>
+          </details>
+
+          <details class="hq-item reveal">
+            <summary class="hq-item__question">
+              <span class="hq-item__text">What happens when a step in the workflow fails?</span>
+              <span class="hq-item__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="hq-item__answer">
+              <p>Three layers of fallback.</p>
+              <p>First, automatic retry with a fallback model — if Claude Sonnet times out, the step retries with GPT-4o or a smaller model.</p>
+              <p>Second, if the step still fails, the workflow pauses and surfaces a structured error with full execution log: what step, what input, what the model returned. Not a stack trace.</p>
+              <p class="hq-item__punch">Third, every workflow has a human-in-the-loop checkpoint option for high-stakes steps — set once, applies forever.</p>
+            </div>
+          </details>
+
+          <details class="hq-item reveal">
+            <summary class="hq-item__question">
+              <span class="hq-item__text">Why wouldn't I just call the APIs myself?</span>
+              <span class="hq-item__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="hq-item__answer">
+              <p>If you have an engineering team, you should. FlowPilot isn't trying to compete with hand-rolled pipelines.</p>
+              <p>But for the founder running a multi-tool business without a developer — the time to set up an API key, write the script, deploy it somewhere with a cron, debug the prompts, monitor failures, and update it when an API contract changes — that's not "free." That's roughly 8-15 hours of tooling per workflow, then ongoing maintenance.</p>
+              <p class="hq-item__punch">The right question isn't "could I do this myself" — it's "is the time worth more than $29 a month."</p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
          FINAL CTA
          ═══════════════════════════════════════════ -->
     <section class="final-cta">
       <div class="final-cta__inner reveal">
         <h2 class="final-cta__title">Every repeat task deserves a flow.</h2>
         <p class="final-cta__subhead">
-          FlowPilot is the AI workflow layer your team has been waiting for.
+          No signup, no setup. Just see the orchestration in action.
         </p>
         <a href="#how-it-works" class="btn btn--primary">
           Try the interactive demo <span aria-hidden="true">→</span>
@@ -713,8 +1006,8 @@
     <div class="site-footer__inner">
       <div class="site-footer__brand">
         <a href="index.html" class="site-nav__brand" aria-label="FlowPilot home">
-          <span class="site-nav__logo" aria-hidden="true">▸</span>
-          <span>FlowPilot</span>
+         <img src="assets/flowpilot-gradient-transparent.svg" alt="" class="site-nav__logo" aria-hidden="true">
+         <span class="site-nav__wordmark">FlowPilot</span>
         </a>
         <p class="site-footer__tagline">Your AI, orchestrated.</p>
         <p class="site-footer__note">
@@ -734,12 +1027,11 @@
       <div class="site-footer__col">
         <h3>Project</h3>
         <ul>
-          <li><a href="#">About this concept</a></li>
+          <li><a href="case-study.html" class="footer-cs-link">Read the case study</a></li>
           <li><a href="#">GitHub repo</a></li>
           <li><a href="#">Design notes</a></li>
         </ul>
       </div>
-    </div>
 
     <div class="site-footer__bottom">
       <span>© 2026 · Concept, not a real product.</span>

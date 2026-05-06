@@ -38,25 +38,29 @@
 .site-nav__brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  color: var(--text-0);
+}
+
+.site-nav__logo {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .site-nav__logo {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.site-nav__wordmark {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 18px;
   color: var(--text-0);
   letter-spacing: -0.01em;
-}
-
-.site-nav__logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  background: var(--gradient-hero);
-  border-radius: var(--radius-md);
-  color: #fff;
-  font-size: 14px;
-  line-height: 1;
 }
 
 .site-nav__links {
@@ -593,6 +597,15 @@
 .hero .workflow-line {
   position: relative;
   overflow: visible;
+  z-index: 0;
+}
+
+/* Match HIW behavior: make all nodes positioned and above lines.
+   This ensures the traveling particle (line::after) stays within the
+   line's visual range and doesn't float over node cards. */
+.hero .workflow-node {
+  position: relative;
+  z-index: 1;
 }
 
 .hero .workflow-line::after {
